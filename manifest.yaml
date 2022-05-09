@@ -1,9 +1,9 @@
 id: moof-pi-hole
 version: 0.5.10-0
-title: "Pi-hole¨"
+title: "Pi-hole"
 description:
-  short: "Pi-hole¨ - Network-wide Ad Blocking."
-  long: "Pi-hole¨ - Network-wide Ad Blocking."
+  short: "Pi-hole - Network-wide Ad Blocking."
+  long: "Pi-hole - Network-wide Ad Blocking."
 release-notes: | 
   - ALPHA
 license: mit
@@ -19,10 +19,10 @@ marketing-site: https://embassyOS.moof.uk/
 # Alerts: omitting these will result in using the default alerts in EmbassyOS, except for start, which has no default.
 # Alerts: omitting these will result in using the default alerts in EmbassyOS, except for start, which has no default.
 alerts:
-  install-alert: "Pi-hole¨ on EOS is BETA software - this plugin is ALPHA software USE AT YOUR OWN RISK"
-  uninstall-alert: "Pi-hole¨ on EOS DELETED?"
-  restore-alert: "Hopefully you can restore Pi-hole¨ service from an Embassy backup?"
-  start-alert: "Pi-hole¨ on EOS is BETA software - this plugin is ALPHA software USE AT YOUR OWN RISK"
+  install-alert: "Pi-Hole on EOS is BETA software - this plugin is ALPHA software USE AT YOUR OWN RISK"
+  uninstall-alert: "Pi-Hole on EOS DELETED?"
+  restore-alert: "Hopefully you can restore Pi-hole service from an Embassy backup?"
+  start-alert: "Pi-Hole on EOS is BETA software - this plugin is ALPHA software USE AT YOUR OWN RISK"
 
 # Denotes whether this service has an instructions page. If this is true, it will pack in `instructions.md` in the same
 # directory as this manifest.yaml
@@ -91,6 +91,13 @@ config:
 # Port mappings from tor ports to the container port
 # if lan is standard, it will proxy HTTP traffic from 443 to the internal port
 interfaces: {}
+
+volumes:
+  main:
+    type: data
+  compat:
+    type: assets
+
 dependencies: {}
 alerts: {}
 
