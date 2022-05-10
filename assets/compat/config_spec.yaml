@@ -10,4 +10,38 @@
 #   target: tor-address
 #   interface: main
 
-[]
+pi-hole-title:
+  type: string
+  name: "PiHole Title"
+  description: "The title of the PiHole instance."
+  nullable: false
+  pattern: '^[^\n:]+$'
+  pattern-description: May not contain newline or ":"
+  copyable: true
+  default: "Testing"
+
+password:
+  type: string
+  name: Password
+  description: The password for accessing the Pi-hole Web Interface
+  nullable: false
+  default: null
+  masked: true
+  
+lan-address:
+  name: Network LAN Address
+  description: The LAN address for the network interface. 
+  type: pointer
+  subtype: package
+  package-id: moof-pi-hole
+  target: lan-address
+  interface: main
+
+dns-address:
+  name: Network LAN/DNS Address
+  description: The LAN/DNS address for the network interface. 
+  type: pointer
+  subtype: package
+  package-id: moof-pi-hole
+  target: lan-address
+  interface: dns

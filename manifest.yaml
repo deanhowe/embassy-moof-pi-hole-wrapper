@@ -1,5 +1,5 @@
 id: moof-pi-hole
-version: 0.5.10-0
+version: 0.5.10-6
 title: "Pi-hole"
 description:
   short: "Pi-hole - Network-wide Ad Blocking."
@@ -55,6 +55,34 @@ main:
     main: /datadir
   io-format: yaml
 
+# Port mappings from tor ports to the container port
+# if lan is standard, it will proxy HTTP traffic from 443 to the internal port
+interfaces:
+  main:
+    name: piholeweb
+    description: PiHole Web Interface
+    lan-config:
+      443:
+        ssl: true
+        internal: 80
+    ui: false
+    protocols:
+      - tcp
+      - http
+  dns:
+    name: piholedns
+    description: PiHole Web Interface
+    lan-config:
+      53:
+        ssl: false
+        internal: 53
+    ui: false
+    protocols:
+      - http
+      - tcp
+      - udp
+
+      
 health-checks: {}
 ##config: ~ # Configuration options, none for hello-world, but see below example for format:
 config:
@@ -83,14 +111,10 @@ config:
       - "moof-pi-hole"
       - /datadir
       - "/mnt/assets/config_rules.yaml"
-      - "/mnt/assets/dependencies.yaml"
     mounts:
       compat: /mnt/assets
       main: /datadir
     io-format: yaml
-# Port mappings from tor ports to the container port
-# if lan is standard, it will proxy HTTP traffic from 443 to the internal port
-interfaces: {}
 
 volumes:
   main:
