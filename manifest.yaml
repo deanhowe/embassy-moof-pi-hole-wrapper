@@ -1,5 +1,5 @@
 id: moof-pi-hole
-version: 0.5.10-6
+version: 0.5.10-7
 title: "Pi-hole"
 description:
   short: "Pi-hole - Network-wide Ad Blocking."
@@ -26,14 +26,7 @@ alerts:
 
 # Denotes whether this service has an instructions page. If this is true, it will pack in `instructions.md` in the same
 # directory as this manifest.yaml
-#has-instructions: true
-
-# Denotes the version required and recommended
-# Required means that the package will not install if unsatisfied
-# Recommended means that the package will not be listed by the registry to instances of EmbassyOS that do not satisfy it
-min-os-version: "0.3.0"
-#os-version-required: ">=0.3.0"
-#os-version-recommended: ">=0.3.0"
+# has-instructions: true
 
 assets:
   # Default = LICENSE.md
@@ -122,6 +115,13 @@ volumes:
   compat:
     type: assets
 
+#    volumes:
+#      - './etc-pihole:/etc/pihole'
+#      - './etc-dnsmasq.d:/etc/dnsmasq.d'    
+#    #   https://github.com/pi-hole/docker-pi-hole#note-on-capabilities
+#    cap_add:
+#      - NET_ADMIN # Recommended but not required (DHCP needs NET_ADMIN)      
+      
 dependencies: {}
 alerts: {}
 

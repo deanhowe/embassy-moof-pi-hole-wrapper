@@ -21,5 +21,5 @@ moof-pi-hole.s9pk: image.tar instructions.md $(ASSET_PATHS)
 		
 # --security-opt=seccomp=unconfined --tag
 
-image.tar: Dockerfile docker_entrypoint.sh check-web.sh configs-get.sh
+image.tar: Dockerfile docker_entrypoint.sh
 		DOCKER_CLI_EXPERIMENTAL=enabled docker buildx build --tag start9/moof-pi-hole/main:$(VERSION) --platform=linux/arm64 -o type=docker,dest=image.tar .
